@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import './Navbar.css'
 import { AuthContext } from '../../Context/AuthProvider';
+import { motion } from "motion/react"
 
 const Navbar = () => {
     const { user, logOutUser } = useContext(AuthContext);
@@ -52,15 +53,15 @@ const Navbar = () => {
                 <div>
                     {
                         user == null ?
-                            <button className="py-2 text-white font-medium px-6 rounded-sm bg-customGreen hidden md:inline"><Link to={'/login'}>Login</Link></button>
+                            <motion.button  whileTap={{ scale: 0.94 }} className="py-2 text-white font-medium px-6 rounded-sm bg-customGreen hidden md:inline"><Link to={'/login'}>Login</Link></motion.button>
                             :
-                            <button onClick={logOutUser} className="py-2 text-white font-medium px-6 rounded-sm bg-customGreen hidden md:inline">Logout</button>
+                            <motion.button  whileTap={{ scale: 0.94 }} onClick={logOutUser} className="py-2 text-white font-medium px-6 rounded-sm bg-customGreen hidden md:inline">Logout</motion.button>
                     }
                 </div>
                 <div className="">
                     {
                         user == null ?
-                            <button className="py-2 text-white font-medium px-6 rounded-sm bg-customGreen hidden md:inline"><Link to={'/register'}>Register</Link></button>
+                            <motion.button whileTap={{ scale: 0.94 }} className="py-2 text-white font-medium px-6 rounded-sm bg-customGreen hidden md:inline"><Link to={'/register'}>Register</Link></motion.button>
                             :
                             <div className="w-14 rounded-full ">
                                 <img className='btn btn-ghost btn-circle avatar'

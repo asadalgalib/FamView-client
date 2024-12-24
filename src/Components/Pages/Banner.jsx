@@ -8,6 +8,7 @@ import Home from '../../assets/Home.jpg'
 import Hospital from '../../assets/clean-empty-hospital-ward-ready-receive-patients-reflecting-modern-medical-care.jpg'
 import Medium from '../../assets/medium-shot-woman-working-luxury-restaurant.jpg'
 import { FaArrowDown } from 'react-icons/fa';
+import { motion } from "motion/react"
 
 const Banner = () => {
 
@@ -19,7 +20,7 @@ const Banner = () => {
                 <SwiperSlide>
                     <div className="bg-green-100 px-4 py-8 lg:py-32 lg:px-32 bg-cover">
                         <div className="flex flex-col-reverse md:flex-row items-center md:justify-between gap-10">
-                            <div className='flex-1 px-2 max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl'>
+                            <motion.div initial={{ scale: 0}} animate={{ scale: 1 ,transition: { duration: 1.5 } }} className='flex-1 px-2 max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl'>
                                 <h1 className='text-2xl lg:text-4xl font-semibold max-w-lg'>Find the Services You Need, Backed by Real Reviews</h1>
                                 <p className='mt-5'>Explore a wide range of services available in your area, from restaurants to home repairs.
                                     Read honest, detailed reviews from customers who have used the service.
@@ -40,9 +41,9 @@ const Banner = () => {
                                     </svg>
                                     <div><button className='bg-customGreen py-2 px-6 ml-4 hidden lg:inline-flex rounded-md text-white font-medium items-center gap-1'>Categories <FaArrowDown></FaArrowDown></button></div>
                                 </label>
-                            </div>
+                            </motion.div>
                             <div>
-                                <img src={Healt} className='rounded-md h-64 md:h-72 lg:h-96 w-full' alt="" />
+                                <motion.img initial={{ scale: 0}} animate={{ scale: 1 ,transition: { duration: 1.5 } }} src={Healt} className='rounded-md h-64 md:h-72 lg:h-96 w-full' alt="" />
                             </div>
                         </div>
                     </div>
