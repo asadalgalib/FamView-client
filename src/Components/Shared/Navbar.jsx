@@ -9,12 +9,16 @@ const Navbar = () => {
     const links = <>
         <li className='text-white font-medium lg:rounded-sm links'><NavLink to={'/'}>Home</NavLink></li>
         {/* {/* <li className='text-white font-medium  lg:rounded-sm '><NavLink>My Reviews</NavLink></li> */}
-        {/* <li className='text-white font-medium  lg:rounded-sm '><NavLink>Services</NavLink></li> */}
+        <li className='text-white font-medium  lg:rounded-sm '><NavLink to={'/addservice'}>Add Service</NavLink></li>
+        {
+            user == null ? 
+            <li className='text-white font-medium  lg:rounded-sm md:hidden'><NavLink to={'/login'}>Login</NavLink></li> : 
+            <li onClick={logOutUser} className='text-white font-medium  lg:rounded-sm md:hidden'>Logout</li>
+        }
         <li className='text-white font-medium  lg:rounded-sm md:hidden'><NavLink to={'/register'}>Register</NavLink></li>
-        <li className='text-white font-medium  lg:rounded-sm md:hidden'><NavLink to={'/login'}>Login</NavLink></li>
     </>
     return (
-        <div className="flex items-center sticky top-0 z-50 justify-between navbar px-4 md:px-12 lg:px-20 bg-customBlue">
+        <div className="flex items-center sticky top-0 z-50 justify-between navbar px-4 md:px-8 lg:px-20 bg-customBlue">
             <div className="flex items-center py-2">
                 <div className="dropdown mr-5">
                     <div tabIndex={0} role="button" className="text-white bg-customGreen menu menu-dropdown lg:hidden">
@@ -60,7 +64,7 @@ const Navbar = () => {
                             :
                             <div className="w-14 rounded-full ">
                                 <img className='btn btn-ghost btn-circle avatar'
-                                    alt="Tailwind CSS Navbar component"
+                                    alt="user"
                                     src={user.photoURL} />
                             </div>
                     }
