@@ -108,7 +108,7 @@ const AddService = () => {
                             className="textarea textarea-bordered textarea-md w-full" required></textarea>
                     </div>
                     <div className="form-control mt-6">
-                        <button className="btn btn-outline rounded-sm bg-customGreen border-none">Add</button>
+                        <button className="btn btn-outline rounded-sm bg-customGreen border-none text-white">Add</button>
                     </div>
                 </form>
             </div>
