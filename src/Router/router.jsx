@@ -4,6 +4,10 @@ import HomeLayout from "../Components/LayOuts/HomeLayout";
 import Login from "../Components/UserSign/Login";
 import Register from "../Components/UserSign/Register";
 import AddService from "../Components/Add/AddService";
+import Private from "./Private";
+import Services from "../Components/Services/Services";
+import Details from "../Components/Services/Details";
+import axios from "axios";
 
 const router = createBrowserRouter([
     {
@@ -24,7 +28,16 @@ const router = createBrowserRouter([
             },
             {
                 path: '/addservice',
-                element: <AddService></AddService>
+                element: <Private><AddService></AddService></Private>
+            },
+            {
+                path: '/services',
+                element: <Services></Services>
+            },
+            {
+                path: '/service/details/:id',
+                element: <Private><Details></Details></Private>,
+                loader: ({params})=> fetch(`http://localhost:5000/service/details/${params.id}`)
             }
         ]
     },

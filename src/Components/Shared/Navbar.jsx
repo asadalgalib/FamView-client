@@ -9,12 +9,12 @@ const Navbar = () => {
 
     const links = <>
         <li className='text-white font-medium lg:rounded-sm links'><NavLink to={'/'}>Home</NavLink></li>
-        {/* {/* <li className='text-white font-medium  lg:rounded-sm '><NavLink>My Reviews</NavLink></li> */}
+        <li className='text-white font-medium  lg:rounded-sm '><NavLink to={'/services'}>Services</NavLink></li>
         <li className='text-white font-medium  lg:rounded-sm '><NavLink to={'/addservice'}>Add Service</NavLink></li>
         {
-            user == null ? 
-            <li className='text-white font-medium  lg:rounded-sm md:hidden'><NavLink to={'/login'}>Login</NavLink></li> : 
-            <li onClick={logOutUser} className='text-white font-medium  lg:rounded-sm md:hidden'>Logout</li>
+            user == null ?
+                <li className='text-white font-medium  lg:rounded-sm md:hidden'><NavLink to={'/login'}>Login</NavLink></li> :
+                <li onClick={logOutUser} className='text-white font-medium  lg:rounded-sm md:hidden'>Logout</li>
         }
         <li className='text-white font-medium  lg:rounded-sm md:hidden'><NavLink to={'/register'}>Register</NavLink></li>
     </>
@@ -53,9 +53,9 @@ const Navbar = () => {
                 <div>
                     {
                         user == null ?
-                            <motion.button  whileTap={{ scale: 0.94 }} className="py-2 text-white font-medium px-6 rounded-sm bg-customGreen hidden md:inline"><Link to={'/login'}>Login</Link></motion.button>
+                            <motion.button whileTap={{ scale: 0.94 }} className="py-2 text-white font-medium px-6 rounded-sm bg-customGreen hidden md:inline"><Link to={'/login'}>Login</Link></motion.button>
                             :
-                            <motion.button  whileTap={{ scale: 0.94 }} onClick={logOutUser} className="py-2 text-white font-medium px-6 rounded-sm bg-customGreen hidden md:inline">Logout</motion.button>
+                            <motion.button whileTap={{ scale: 0.94 }} onClick={logOutUser} className="py-2 text-white font-medium px-6 rounded-sm bg-customGreen hidden md:inline">Logout</motion.button>
                     }
                 </div>
                 <div className="">
