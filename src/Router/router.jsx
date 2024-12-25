@@ -6,8 +6,7 @@ import Register from "../Components/UserSign/Register";
 import AddService from "../Components/Add/AddService";
 import Private from "./Private";
 import Services from "../Components/Services/Services";
-import Details from "../Components/Services/Details";
-import axios from "axios";
+import DetailsLayout from "../Components/LayOuts/DetailsLayout";
 
 const router = createBrowserRouter([
     {
@@ -36,7 +35,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/service/details/:id',
-                element: <Private><Details></Details></Private>,
+                element: <Private><DetailsLayout></DetailsLayout></Private>,
                 loader: ({params})=> fetch(`http://localhost:5000/service/details/${params.id}`)
             }
         ]
