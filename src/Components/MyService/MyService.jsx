@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Context/AuthProvider';
 import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
 
 const MyService = () => {
     const [myService, setMyService] = useState([]);
@@ -22,13 +23,44 @@ const MyService = () => {
     const handleOnChange = input => {
         const inValue = input.target.value;
         const lowValue = inValue.toLowerCase();
-        const filteredData = myService.filter(data => { 
+        const filteredData = myService.filter(data => {
             return data.title.toLowerCase().includes(lowValue);
         })
         setFilteredService(filteredData);
     }
 
-    // 
+    const handleDelete = id => {
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete(`http://localhost:5000/myservice/delete?id=${id}`)
+                    .then(res => {
+                        console.log(res.data);
+                        if (res.data.deletedCount > 0) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your post has been deleted.",
+                                icon: "success"
+                            });
+                        }
+                    })
+                    .catch(err => {
+                        toast.error(err.code);
+                    })
+
+                    const remaining = filteredService.filter(data => data._id !== id )
+                    setFilteredService(remaining);
+            }
+        });
+    }
 
     return (
         <div className='bg-green-100 px-4 md:px-12 lg:px-28 py-8 md:py-12 lg:py-20 min-h-screen'>
@@ -67,7 +99,7 @@ const MyService = () => {
                     </thead>
                     <tbody>
                         {
-                            filteredService.map(service =><tr className=''>
+                            filteredService.map(service => <tr key={service._id}>
                                 <td>
                                     <div className="flex items-center gap-3">
                                         <div className="avatar hidden md:inline">
@@ -89,11 +121,11 @@ const MyService = () => {
                                 <td>{service?.price} BDT</td>
                                 <th className='flex flex-col gap-2'>
                                     <button className="btn btn-ghost btn-sm bg-customGreen hover:bg-customBlue text-white">Edit</button>
-                                    <button onClick={()=>handleDelete(service?._id)} className="btn btn-ghost btn-sm bg-customGreen hover:bg-customBlue text-white">Delete</button>
+                                    <button onClick={() => handleDelete(service?._id)} className="btn btn-ghost btn-sm bg-customGreen hover:bg-customBlue text-white">Delete</button>
                                 </th>
                             </tr>)
                         }
-                    </tbody>                   
+                    </tbody>
                 </table>
             </div>
         </div>
