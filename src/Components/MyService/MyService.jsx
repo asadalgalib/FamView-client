@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Context/AuthProvider';
 import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 const MyService = () => {
     const [myService, setMyService] = useState([]);
@@ -18,7 +19,7 @@ const MyService = () => {
             .catch(err => {
                 toast.error(err.code)
             })
-    }, [])
+    }, [user?.email])
 
     const handleOnChange = input => {
         const inValue = input.target.value;
@@ -120,7 +121,7 @@ const MyService = () => {
                                 </td>
                                 <td>{service?.price} BDT</td>
                                 <th className='flex flex-col gap-2'>
-                                    <button className="btn btn-ghost btn-sm bg-customGreen hover:bg-customBlue text-white">Edit</button>
+                                <Link to={`/update/${service._id}`}><button className="btn btn-ghost btn-sm bg-customGreen w-full hover:bg-customBlue text-white">Edit</button></Link>
                                     <button onClick={() => handleDelete(service?._id)} className="btn btn-ghost btn-sm bg-customGreen hover:bg-customBlue text-white">Delete</button>
                                 </th>
                             </tr>)
