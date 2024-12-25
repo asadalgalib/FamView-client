@@ -11,6 +11,7 @@ const Navbar = () => {
         <li className='text-white font-medium lg:rounded-sm links'><NavLink to={'/'}>Home</NavLink></li>
         <li className='text-white font-medium  lg:rounded-sm '><NavLink to={'/services'}>Services</NavLink></li>
         <li className='text-white font-medium  lg:rounded-sm '><NavLink to={'/addservice'}>Add Service</NavLink></li>
+        <li className='text-white font-medium  lg:rounded-sm '><NavLink to={'/myservice'}>My Service</NavLink></li>
         {
             user == null ?
                 <li className='text-white font-medium  lg:rounded-sm md:hidden'><NavLink to={'/login'}>Login</NavLink></li> :

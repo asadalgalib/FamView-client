@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import ServicesCard from './ServicesCard';
+import { toast } from 'react-toastify';
 
 const Services = () => {
     const [services, setServices] = useState([]);
