@@ -9,6 +9,7 @@ import Services from "../Components/Services/Services";
 import DetailsLayout from "../Components/LayOuts/DetailsLayout";
 import MyService from "../Components/MyService/MyService";
 import EditService from "../Components/MyService/EditService";
+import MyReview from "../Components/MyReview/MyReview";
 
 const router = createBrowserRouter([
     {
@@ -45,8 +46,8 @@ const router = createBrowserRouter([
                 element: <Private><MyService></MyService></Private>
             },
             {
-                path: '/update/:id',
-                element: <Private><EditService></EditService></Private>
+                path:'/myreview',
+                element: <Private><MyReview></MyReview></Private>
             }
         ]
     },

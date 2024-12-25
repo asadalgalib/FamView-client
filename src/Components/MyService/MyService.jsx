@@ -4,11 +4,14 @@ import { AuthContext } from '../../Context/AuthProvider';
 import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
+import EditService from './EditService';
 
 const MyService = () => {
     const [myService, setMyService] = useState([]);
     const [filteredService, setFilteredService] = useState([]);
     const { user } = useContext(AuthContext);
+    const [data, setData] = useState([])
+    const [category, setCategory] = useState(null);
 
     useEffect(() => {
         axios.get(`http://localhost:5000/myservice?email=${user.email}`)
@@ -57,14 +60,28 @@ const MyService = () => {
                         toast.error(err.code);
                     })
 
-                    const remaining = filteredService.filter(data => data._id !== id )
-                    setFilteredService(remaining);
+                const remaining = filteredService.filter(data => data._id !== id)
+                setFilteredService(remaining);
             }
         });
     }
 
+    const handleUpdate = id => {
+        document.getElementById('my_modal_2').showModal();
+
+        axios.get(`http://localhost:5000/service/details/${id}`)
+            .then(res => {
+                console.log(res.data);
+                setData(res.data);
+                setCategory(res.data.category);
+            })
+            .catch(err => {
+                toast.error(err.code);
+            })
+    }
+
     return (
-        <div className='bg-green-100 px-4 md:px-12 lg:px-28 py-8 md:py-12 lg:py-20 min-h-screen'>
+        <div className=' px-4 md:px-12 lg:px-28 py-8 md:py-12 lg:py-20 min-h-screen'>
             <div className='flex flex-col gap-5 lg:flex-row items-center justify-between'>
                 <div>
                     <h1 className='text-2xl font-semibold lg:text-4xl'>My Services</h1>
@@ -121,7 +138,7 @@ const MyService = () => {
                                 </td>
                                 <td>{service?.price} BDT</td>
                                 <th className='flex flex-col gap-2'>
-                                <Link to={`/update/${service._id}`}><button className="btn btn-ghost btn-sm bg-customGreen w-full hover:bg-customBlue text-white">Edit</button></Link>
+                                    <button onClick={() => handleUpdate(service._id)} className="btn btn-ghost btn-sm bg-customGreen w-full hover:bg-customBlue text-white">Edit</button>
                                     <button onClick={() => handleDelete(service?._id)} className="btn btn-ghost btn-sm bg-customGreen hover:bg-customBlue text-white">Delete</button>
                                 </th>
                             </tr>)
@@ -129,8 +146,16 @@ const MyService = () => {
                     </tbody>
                 </table>
             </div>
+            {/* modal start */}
+            <dialog id="my_modal_2" className="modal">
+                <div className="">
+                    <EditService data={data} category={category} setCategory={setCategory}></EditService>
+                </div>
+            </dialog>
+            {/* modal end */}
         </div>
     );
 };
 
 export default MyService;
+// <Link to={`/update/${service._id}`}>

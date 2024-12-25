@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
 const AddReview = () => {
     const { rating, user } = useContext(AuthContext);
     const service = useLoaderData();
-    const { _id } = service
+    const { _id, title } = service
 
     // console.log(service);
     const handleReview = e => {
@@ -22,8 +22,10 @@ const AddReview = () => {
         const email = user.email
         const review = form.review.value;
         const service_id = _id;
+        const service_title = title;
+        const date = `${new Date().getDate()}/${new Date().getMonth() + 1}/${new Date().getFullYear()}`;
 
-        const myReview = { name, email, photo, service_id, rating, review }
+        const myReview = { name, email, photo, service_title, service_id, date, rating, review }
         console.log(myReview);
 
         axios.post('http://localhost:5000/service-review', myReview)
