@@ -72,6 +72,10 @@ const MyReview = () => {
         })
     }
 
+
+     useEffect(() => {
+            document.title = "FamView - My Review";
+        }, [])
     return (
         <div className='max-w-4xl mx-auto px-4 md:px-12 lg:px-28 py-8 md:py-12 lg:py-20 min-h-screen'>
             <div>
@@ -86,13 +90,13 @@ const MyReview = () => {
                                 <div className='flex-1'>
                                     <img className='rounded-full w-20'
                                         src={review.photo}
-                                        alt="Shoes" />
+                                        alt="profile" />
                                 </div>
                                 <div className="mt-4">
                                     <h1 className='text-xl font-medium'>{review.name}</h1>
                                     <p className=''><span className='font-medium'>Service Title :</span> {review.service_title}</p>
                                     <div className='flex items-center justify-start gap-2'>
-                                        <p className='font-medium'>Rating : {review.rating}</p>
+                                        <p className='font-medium'>Rating : {review.rating}/10</p>
                                         <p className='flex items-center justify-center text-yellow-400'><IoStar /><IoStar /><IoStar /><IoStar /> <IoStarHalf /></p>
                                     </div>
                                     <p className=''><span className='font-medium'>Review :</span> {review.review}</p>

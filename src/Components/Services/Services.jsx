@@ -1,9 +1,11 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import ServicesCard from './ServicesCard';
 import { toast } from 'react-toastify';
+import { AuthContext } from '../../Context/AuthProvider';
 
 const Services = () => {
+    const [dataLoading, setDataLoading] = useState(true)
     const [services, setServices] = useState([]);
 
     useEffect(() => {
@@ -11,12 +13,20 @@ const Services = () => {
             .then(res => {
                 console.log(res.data);
                 setServices(res.data);
+                setDataLoading(false)
             })
             .catch(err => {
                 toast.error(err.code)
             })
     }, [])
 
+     useEffect(() => {
+            document.title = "FamView - Services";
+        }, []);
+
+    if (dataLoading) {
+        return <div className='min-h-screen flex justify-center items-center'><span className="loading loading-spinner text-customGreen"></span></div>
+    }
     return (
         <div className=' px-4 md:px-12 lg:px-28 py-8 md:py-12 lg:py-20'>
             <div>

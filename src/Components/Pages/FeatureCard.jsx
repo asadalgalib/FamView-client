@@ -8,10 +8,10 @@ const FeatureCard = ({ service }) => {
     const {image, title,price, description,_id} = service 
     return (
         <motion.div whileHover={{ scale: 1.02 ,transition:{duration: 0.3 } }} className="flex flex-col p-5 bg-green-100 rounded-sm border-2 border-customGreen">
-            <div className='flex-1'>
+            <div className='flex-1 grid items-center justify-center'>
                 <img className='rounded-md'
                     src={image}
-                    alt="Shoes" />
+                    alt="photo" />
             </div>
             <div className="mt-4">
                 <div>

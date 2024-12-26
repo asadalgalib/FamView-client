@@ -18,7 +18,6 @@ const Register = () => {
         const password = form.password.value;
 
         console.log(name, photo, email, password);
-
         if (password.length < 6) {
             toast.error('Password must be atleast six character');
             return;
@@ -66,7 +65,7 @@ const Register = () => {
                             <label className="label">
                                 <span className="label-text text-[#FFFFFF99]">Photo</span>
                             </label>
-                            <input type="text" placeholder="Photo URL" name="photo" className="input input-bordered" />
+                            <input type="url" placeholder="Photo URL" name="photo" className="input input-bordered" required/>
                         </div>
                         <div className="form-control">
                             <label className="label">

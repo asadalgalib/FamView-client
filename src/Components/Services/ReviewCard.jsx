@@ -10,7 +10,7 @@ const ReviewCard = ({ data }) => {
             <div className='flex-1 flex items-center justify-center'>
                 <img className='rounded-full w-20'
                     src={photo}
-                    alt="Shoes" />
+                    alt="profile" />
             </div>
             <div className="mt-4 lex items-center justify-center">
                 <h1 className='text-center text-xl font-medium'>{name}</h1>

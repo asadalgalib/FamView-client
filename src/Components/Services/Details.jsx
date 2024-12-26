@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useLoaderData } from 'react-router-dom';
 
 const Details = () => {
     const service = useLoaderData();
 
     const { image, title, price, description, category, _id, date, companyName, email, website, reviewCount } = service
+
+    useEffect(() => {
+                document.title = "FamView - Details";
+            }, []);
     return (
         <div className='bg-base-200 p-4 md:p-6 lg:p-10 mx-4 md:mx-12 lg:mx-28 my-8 md:my-6 lg:my-10'>
             <div className=''>
@@ -24,7 +28,7 @@ const Details = () => {
                         <p><span className='text-lg font-medium'>Description : </span> {description}</p>
                     </div>
                     <div>
-                        <figure className='bg-green-100 p-5 border border-customGreen rounded-sm'>
+                        <figure className='bg-green-100 p-5 border border-customGreen rounded-sm grid items-center justify-center'>
                             <img src={image} className='rounded-sm' alt="" />
                         </figure>
                     </div>

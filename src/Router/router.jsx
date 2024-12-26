@@ -10,11 +10,13 @@ import DetailsLayout from "../Components/LayOuts/DetailsLayout";
 import MyService from "../Components/MyService/MyService";
 import EditService from "../Components/MyService/EditService";
 import MyReview from "../Components/MyReview/MyReview";
+import ErrorPage from "../Components/Shared/ErrorPage";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <MainLayout></MainLayout>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',

@@ -80,6 +80,9 @@ const MyService = () => {
             })
     }
 
+    useEffect(() => {
+        document.title = "FamView - My Service";
+    }, []);
     return (
         <div className=' px-4 md:px-12 lg:px-28 py-8 md:py-12 lg:py-20 min-h-screen'>
             <div className='flex flex-col gap-5 lg:flex-row items-center justify-between'>

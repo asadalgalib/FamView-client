@@ -7,6 +7,7 @@ import { motion } from "motion/react"
 import { Link } from 'react-router-dom';
 
 const Feature = () => {
+    const [dataLoading, setDataLoading] = useState(true)
     const [services, setServices] = useState([]);
 
     useEffect(() => {
@@ -14,12 +15,16 @@ const Feature = () => {
             .then(res => {
                 console.log(res.data);
                 setServices(res.data);
+                setDataLoading(false)
             })
             .catch(err => {
                 toast.error(err.code)
             })
     }, [])
 
+    if (dataLoading) {
+        return <div className='min-h-screen flex justify-center items-center'><span className="loading loading-spinner text-customGreen"></span></div>
+    }
     return (
         <div className='bg-base-200 px-4 md:px-12 lg:px-28 py-8 md:py-12 lg:py-20'>
             <div className='flex flex-col lg:flex-row justify-center lg:justify-between items-center'>

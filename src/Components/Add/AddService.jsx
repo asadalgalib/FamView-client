@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { AuthContext } from '../../Context/AuthProvider';
 import { toast } from 'react-toastify';
 import axios from 'axios';
@@ -23,9 +23,9 @@ const AddService = () => {
         const date = `${new Date().getDate()}/${new Date().getMonth() + 1}/${new Date().getFullYear()}`;
         const category = form.category.value;
 
-        const serviceData = { title, image, website, companyName, price, email, description, date,category }
+        const serviceData = { title, image, website, companyName, price, email, description, date, category }
         console.log(serviceData);
-
+        
         axios.post('http://localhost:5000/addservice', serviceData)
             .then(res => {
                 console.log(res.data);
@@ -45,6 +45,9 @@ const AddService = () => {
             })
     }
 
+    useEffect(() => {
+                document.title = "FamView - Add Service";
+            }, []);
     return (
         <div className='py-8 md:py-14 px-4 md:px-8 bg-green-100'>
             <div className='bg-customBlue w-full max-w-4xl shrink-0 shadow-2xl rounded-sm p-10 mx-auto'>
@@ -91,6 +94,7 @@ const AddService = () => {
                                 </label>
                                 <select defaultValue='Select a Categoy' name="category" className="select select-bordered w-full">
                                     <option>Technology</option>
+                                    <option>Food</option>
                                     <option>Clothings</option>
                                     <option>Beauty</option>
                                     <option>Bars</option>
