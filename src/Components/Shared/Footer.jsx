@@ -33,7 +33,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className='flex items-center justify-center mt-10'>
-                <p className='text-[#FFFFFF99]'><small>Copyright © {new Date().getFullYear()} - All right reserved by ACME Industries Ltd</small></p>
+                <p className='text-[#FFFFFF99]'><small>Copyright © {new Date().getFullYear()} - All right reserved by FamView Solutions</small></p>
             </div>
         </footer>
     );

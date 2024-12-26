@@ -4,14 +4,16 @@ import { useLoaderData } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import ReviewCard from './ReviewCard';
 import { AuthContext } from '../../Context/AuthProvider';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 const Reviews = () => {
     const {reviews, setReviews} = useContext(AuthContext)
     const service = useLoaderData();
-    const { _id: service_id } = service
+    const axiosSecure = useAxiosSecure();
+    const { _id: service_id } = service;
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/reviews?id=${service_id}`)
+        axiosSecure.get(`/reviews?id=${service_id}`)
             .then(res => {
                 console.log(res.data);
                 setReviews(res.data);

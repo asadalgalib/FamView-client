@@ -5,13 +5,15 @@ import { toast } from 'react-toastify';
 import FeatureCard from './FeatureCard';
 import { motion } from "motion/react"
 import { Link } from 'react-router-dom';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 const Feature = () => {
     const [dataLoading, setDataLoading] = useState(true)
     const [services, setServices] = useState([]);
+    const axiosSecure = useAxiosSecure();
 
     useEffect(() => {
-        axios.get('http://localhost:5000/feature')
+        axiosSecure.get('/feature')
             .then(res => {
                 console.log(res.data);
                 setServices(res.data);

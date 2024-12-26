@@ -5,9 +5,11 @@ import { AuthContext } from '../../Context/AuthProvider';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 const UpdateReview = ({ data }) => {
     const { rating } = useContext(AuthContext);
+    const axiosSecure = useAxiosSecure();
 
     const handleUpdate = e => {
         e.preventDefault();
@@ -17,7 +19,7 @@ const UpdateReview = ({ data }) => {
         console.log(review, rating);
         const update = { review, rating }
 
-        axios.put(`http://localhost:5000/myreview/update?id=${data._id}`,update)
+        axiosSecure.put(`/myreview/update?id=${data._id}`,update)
             .then(res => {
                 // console.log(res.data);
                 if (res.data.modifiedCount > 0) {

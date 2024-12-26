@@ -6,15 +6,17 @@ import { motion } from "motion/react"
 import { IoStar, IoStarHalf } from 'react-icons/io5';
 import Swal from 'sweetalert2';
 import UpdateReview from './UpdateReview';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 const MyReview = () => {
+    const axiosSecure = useAxiosSecure();
     const { user,setRating } = useContext(AuthContext);
     const [myReview, setMyReview] = useState([])
     const [updateData, setUpdateData] = useState([])
     const [filteredService, setFilteredService] = useState([])
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/myreview?email=${user.email}`)
+        axiosSecure.get(`/myreview?email=${user.email}`,{withCredentials: true})
             .then(res => {
                 console.log(res.data);
                 setMyReview(res.data);
@@ -37,7 +39,7 @@ const MyReview = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:5000/myreview/delete?id=${id}`)
+                axiosSecure.delete(`/myreview/delete?id=${id}`)
                     .then(res => {
                         console.log(res.data);
                         if (res.data.deletedCount > 0) {
@@ -61,7 +63,7 @@ const MyReview = () => {
     const handleUpdate = id =>{
         document.getElementById('my_modal_2').showModal();
 
-        axios.get(`http://localhost:5000/review?id=${id}`)
+        axiosSecure.get(`/review?id=${id}`)
         .then(res =>{
             console.log(res.data);
             setUpdateData(res.data);

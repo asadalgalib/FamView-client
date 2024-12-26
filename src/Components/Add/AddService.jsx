@@ -4,10 +4,12 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 const AddService = () => {
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
+    const axiosSecure = useAxiosSecure();
 
     const handleAdd = e => {
         e.preventDefault();
@@ -26,7 +28,7 @@ const AddService = () => {
         const serviceData = { title, image, website, companyName, price, email, description, date, category }
         console.log(serviceData);
         
-        axios.post('http://localhost:5000/addservice', serviceData)
+        axiosSecure.post('/addservice', serviceData)
             .then(res => {
                 console.log(res.data);
                 if (res.data.insertedId) {

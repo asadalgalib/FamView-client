@@ -6,12 +6,14 @@ import { useLoaderData, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 const AddReview = () => {
     const navigate = useNavigate()
     const { rating, user } = useContext(AuthContext);
     const service = useLoaderData();
-    const { _id, title } = service
+    const axiosSecure = useAxiosSecure();
+    const { _id, title } = service;
 
 
     // console.log(service);
@@ -30,7 +32,7 @@ const AddReview = () => {
         const myReview = { name, email, photo, service_title, service_id, date, rating, review }
         console.log(myReview);
 
-        axios.post('http://localhost:5000/service-review', myReview)
+        axiosSecure.post('/service-review', myReview)
             .then(res => {
                 console.log(res.data);
                 if (res.data.insertedId) {

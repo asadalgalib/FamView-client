@@ -4,8 +4,10 @@ import { ImCross } from 'react-icons/im';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 const EditService = ({ data, category, setCategory }) => {
+    const axiosSecure = useAxiosSecure();
 
     const handleChange = e => {
         setCategory(e.target.value);
@@ -25,7 +27,7 @@ const EditService = ({ data, category, setCategory }) => {
 
         console.log(update);
 
-        axios.put(`http://localhost:5000/myservice/update?id=${data._id}`, update)
+        axiosSecure.put(`/myservice/update?id=${data._id}`, update)
             .then(res => {
                 console.log(res.data);
                 if(res.data.modifiedCount > 0){

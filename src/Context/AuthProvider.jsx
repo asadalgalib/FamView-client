@@ -2,6 +2,8 @@ import React, { createContext, useEffect, useState } from 'react';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, updateProfile, GoogleAuthProvider, sendPasswordResetEmail } from "firebase/auth";
 import app from '../Firebase/Firebase.config';
 import { toast } from 'react-toastify';
+import axios from 'axios';
+import useAxiosSecure from '../Hooks/useAxiosSecure';
 
 export const AuthContext = createContext(null)
 
@@ -10,8 +12,9 @@ const AuthProvider = ({ children }) => {
     const provider = new GoogleAuthProvider();
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [rating,setRating] = useState(0)
-    const [reviews, setReviews] = useState([])
+    const [rating, setRating] = useState(0)
+    const [reviews, setReviews] = useState([]);
+    const axiosSecure = useAxiosSecure();
 
     const createUser = (email, password) => {
         setLoading(false);
@@ -36,17 +39,41 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-            setLoading(false);
             setUser(currentUser);
+            console.log(currentUser);
+
+            if (currentUser?.email) {
+                const user = { email: currentUser?.email };
+                axiosSecure.post('/jwt/login', user, { withCredentials: true })
+                    .then(res => {
+                        console.log(res.data);
+                        setLoading(false);
+                    })
+                    .catch(err => {
+                        toast.error(err.code)
+                    })
+            }
+            else {
+                axiosSecure.post('/jwt/logout', {}, { withCredentials: true })
+                    .then(res => {
+                        console.log('log out', res.data);
+                        setLoading(false);
+                    })
+                    .catch(err => {
+                        toast.error(err.code)
+                    })
+            }
+
         })
         return () => {
             unSubscribe();
         }
     }, [])
 
-    const authInfo = { auth, provider, user, setUser, loading, createUser, updateUserProfile, logInUser, logOutUser,rating,setRating,
+    const authInfo = {
+        auth, provider, user, setUser, loading, createUser, updateUserProfile, logInUser, logOutUser, rating, setRating,
         reviews, setReviews
-     }
+    }
 
     return (
         <AuthContext.Provider value={authInfo}>

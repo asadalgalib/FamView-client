@@ -3,18 +3,19 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Context/AuthProvider';
 import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
-import { Link } from 'react-router-dom';
 import EditService from './EditService';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 const MyService = () => {
     const [myService, setMyService] = useState([]);
     const [filteredService, setFilteredService] = useState([]);
     const { user } = useContext(AuthContext);
     const [data, setData] = useState([])
-    const [category, setCategory] = useState(null);
+    const [category, setCategory] = useState('');
+    const axiosSecure = useAxiosSecure();
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/myservice?email=${user.email}`)
+        axiosSecure.get(`/myservice?email=${user.email}`, {withCredentials: true})
             .then(res => {
                 setMyService(res.data);
                 setFilteredService(res.data)
@@ -45,7 +46,7 @@ const MyService = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:5000/myservice/delete?id=${id}`)
+                axiosSecure.delete(`/myservice/delete?id=${id}`)
                     .then(res => {
                         console.log(res.data);
                         if (res.data.deletedCount > 0) {
@@ -69,7 +70,7 @@ const MyService = () => {
     const handleUpdate = id => {
         document.getElementById('my_modal_2').showModal();
 
-        axios.get(`http://localhost:5000/service/details/${id}`)
+        axiosSecure.get(`/service/details/${id}`)
             .then(res => {
                 console.log(res.data);
                 setData(res.data);
@@ -90,7 +91,7 @@ const MyService = () => {
                     <h1 className='text-2xl font-semibold lg:text-4xl'>My Services</h1>
                 </div>
                 <div>
-                    <label className="input flex items-center gap-2">
+                    <label className="input  input-bordered border-customGreen flex items-center gap-2">
                         <input onChange={handleOnChange} type="text" className="grow" name='search' placeholder="Search by title" />
                         <button>
                             <svg
