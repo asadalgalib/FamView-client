@@ -15,7 +15,6 @@ const Reviews = () => {
     useEffect(() => {
         axiosSecure.get(`/reviews?id=${service_id}`)
             .then(res => {
-                console.log(res.data);
                 setReviews(res.data);
             })
             .catch(err => {

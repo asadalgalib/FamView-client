@@ -14,7 +14,6 @@ const Services = () => {
     useEffect(() => {
         axiosSecure.get('/services')
             .then(res => {
-                console.log(res.data);
                 setServices(res.data);
                 setFilteredService(res.data);
                 setDataLoading(false)

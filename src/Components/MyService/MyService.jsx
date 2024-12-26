@@ -48,7 +48,6 @@ const MyService = () => {
             if (result.isConfirmed) {
                 axiosSecure.delete(`/myservice/delete?id=${id}`)
                     .then(res => {
-                        console.log(res.data);
                         if (res.data.deletedCount > 0) {
                             Swal.fire({
                                 title: "Deleted!",
@@ -72,7 +71,6 @@ const MyService = () => {
 
         axiosSecure.get(`/service/details/${id}`)
             .then(res => {
-                console.log(res.data);
                 setData(res.data);
                 setCategory(res.data.category);
             })

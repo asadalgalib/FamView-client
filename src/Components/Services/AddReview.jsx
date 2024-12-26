@@ -3,7 +3,6 @@ import review from '../../assets/give-review.jpg'
 import RateComponent from '../Pages/RateComponent';
 import { AuthContext } from '../../Context/AuthProvider';
 import { useLoaderData, useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
@@ -15,8 +14,6 @@ const AddReview = () => {
     const axiosSecure = useAxiosSecure();
     const { _id, title } = service;
 
-
-    // console.log(service);
     const handleReview = e => {
         e.preventDefault();
 
@@ -30,11 +27,9 @@ const AddReview = () => {
         const date = `${new Date().getDate()}/${new Date().getMonth() + 1}/${new Date().getFullYear()}`;
 
         const myReview = { name, email, photo, service_title, service_id, date, rating, review }
-        console.log(myReview);
 
         axiosSecure.post('/service-review', myReview)
             .then(res => {
-                console.log(res.data);
                 if (res.data.insertedId) {
                     Swal.fire({
                         position: "center",

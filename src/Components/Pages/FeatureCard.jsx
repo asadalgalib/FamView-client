@@ -4,7 +4,7 @@ import { motion } from "motion/react"
 import { Link } from 'react-router-dom';
 
 const FeatureCard = ({ service }) => {
-    console.log(service);
+
     const {image, title,price, description,_id} = service 
     return (
         <motion.div whileHover={{ scale: 1.02 ,transition:{duration: 0.3 } }} className="flex flex-col p-5 bg-green-100 rounded-sm border-2 border-customGreen">

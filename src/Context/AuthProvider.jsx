@@ -2,7 +2,6 @@ import React, { createContext, useEffect, useState } from 'react';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, updateProfile, GoogleAuthProvider, sendPasswordResetEmail } from "firebase/auth";
 import app from '../Firebase/Firebase.config';
 import { toast } from 'react-toastify';
-import axios from 'axios';
 import useAxiosSecure from '../Hooks/useAxiosSecure';
 
 export const AuthContext = createContext(null)
@@ -40,13 +39,11 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
-            console.log(currentUser);
 
             if (currentUser?.email) {
                 const user = { email: currentUser?.email };
                 axiosSecure.post('/jwt/login', user, { withCredentials: true })
                     .then(res => {
-                        console.log(res.data);
                         setLoading(false);
                     })
                     .catch(err => {
@@ -56,7 +53,6 @@ const AuthProvider = ({ children }) => {
             else {
                 axiosSecure.post('/jwt/logout', {}, { withCredentials: true })
                     .then(res => {
-                        console.log('log out', res.data);
                         setLoading(false);
                     })
                     .catch(err => {

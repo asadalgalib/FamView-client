@@ -15,7 +15,6 @@ const Feature = () => {
     useEffect(() => {
         axiosSecure.get('/feature')
             .then(res => {
-                console.log(res.data);
                 setServices(res.data);
                 setDataLoading(false)
             })

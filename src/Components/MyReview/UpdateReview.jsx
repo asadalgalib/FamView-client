@@ -16,12 +16,10 @@ const UpdateReview = ({ data }) => {
 
         const form = e.target;
         const review = form.review.value;
-        console.log(review, rating);
         const update = { review, rating }
 
         axiosSecure.put(`/myreview/update?id=${data._id}`,update)
             .then(res => {
-                // console.log(res.data);
                 if (res.data.modifiedCount > 0) {
                     Swal.fire({
                         title: 'Success!',

@@ -17,10 +17,10 @@ const Footer = () => {
                 </div>
                 <div className='flex flex-col items-center justify-center mt-4'>
                     <div className="text-[#FFFFFF99] grid grid-flow-col gap-4 mb-5">
-                        <a className="link link-hover">About us</a>
-                        <a className="link link-hover">Contact</a>
-                        <a className="link link-hover">Jobs</a>
-                        <a className="link link-hover">Press kit</a>
+                        <Link className="link link-hover" to={'/'}>Home</Link>
+                        <Link className="link link-hover" to={'/services'}>Service</Link>
+                        <Link className="link link-hover" to={'/login'}>Login</Link>
+                        <Link className="link link-hover" to={'/register'}>Register</Link>
                     </div>
                     <div>
                         <div className="text-[#FFFFFF99] grid grid-flow-col gap-4">

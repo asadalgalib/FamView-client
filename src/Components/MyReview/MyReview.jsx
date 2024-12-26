@@ -17,8 +17,7 @@ const MyReview = () => {
 
     useEffect(() => {
         axiosSecure.get(`/myreview?email=${user.email}`,{withCredentials: true})
-            .then(res => {
-                console.log(res.data);
+            .then(res => {;
                 setMyReview(res.data);
                 setFilteredService(res.data);
             })
@@ -41,7 +40,6 @@ const MyReview = () => {
             if (result.isConfirmed) {
                 axiosSecure.delete(`/myreview/delete?id=${id}`)
                     .then(res => {
-                        console.log(res.data);
                         if (res.data.deletedCount > 0) {
                             Swal.fire({
                                 title: "Deleted!",
@@ -65,7 +63,6 @@ const MyReview = () => {
 
         axiosSecure.get(`/review?id=${id}`)
         .then(res =>{
-            console.log(res.data);
             setUpdateData(res.data);
             setRating(res.data.rating);
         })

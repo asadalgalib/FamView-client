@@ -25,11 +25,8 @@ const EditService = ({ data, category, setCategory }) => {
         const description = form.description.value;
         const update = { title, image, website, companyName, price, description, category }
 
-        console.log(update);
-
         axiosSecure.put(`/myservice/update?id=${data._id}`, update)
             .then(res => {
-                console.log(res.data);
                 if(res.data.modifiedCount > 0){
                     Swal.fire({
                         position: "center",
@@ -116,7 +113,7 @@ const EditService = ({ data, category, setCategory }) => {
                         className="textarea textarea-bordered textarea-md w-full" required></textarea>
                 </div>
                 <div className="form-control mt-6">
-                    <button className="btn btn-outline rounded-sm bg-customGreen border-none text-white">Add</button>
+                    <button className="btn btn-outline rounded-sm bg-customGreen border-none text-white">Update</button>
                 </div>
             </form>
         </div>

@@ -3,8 +3,8 @@ import { motion } from "motion/react"
 import { IoStar, IoStarHalf } from 'react-icons/io5';
 
 const ReviewCard = ({ data }) => {
-    console.log(data);
     const { name, email, photo, rating, review } = data
+    
     return (
         <motion.div whileHover={{ scale: 1.02, transition: { duration: 0.3 } }} className="flex flex-col p-5 bg-green-100 rounded-sm border-2 border-customGreen">
             <div className='flex-1 flex items-center justify-center'>

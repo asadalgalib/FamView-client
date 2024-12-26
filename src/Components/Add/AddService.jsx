@@ -26,11 +26,9 @@ const AddService = () => {
         const category = form.category.value;
 
         const serviceData = { title, image, website, companyName, price, email, description, date, category }
-        console.log(serviceData);
         
         axiosSecure.post('/addservice', serviceData)
             .then(res => {
-                console.log(res.data);
                 if (res.data.insertedId) {
                     Swal.fire({
                         title: 'Success!',
@@ -43,7 +41,7 @@ const AddService = () => {
                 }
             })
             .catch(err => {
-                console.log(err);
+                toast.error(err);
             })
     }
 

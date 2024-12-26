@@ -24,7 +24,6 @@ const Login = () => {
 
         logInUser(email, password)
             .then(result => {
-                console.log(result);
                 setUser(result.user);
                 toast.success('Login successful');
                 form.reset();
