@@ -78,26 +78,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-
-<div className="dropdown flex items-center justify-center dropdown-end">
-    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-        <div className="w-14 rounded-full">
-            <img
-                alt="Tailwind CSS Navbar component"
-                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
-        </div>
-    </div>
-    <ul
-        tabIndex={0}
-        className="menu menu-sm dropdown-content rounded-sm z-[1] mt-44 text-white bg-customBlue w-44 p-2 shadow">
-        <li>
-            <a className="justify-between">
-                Profile
-                <span className="badge bg-customGreen border-none text-white">New</span>
-            </a>
-        </li>
-        <li><Link>Settings</Link></li>
-        <li><Link>Logout</Link></li>
-    </ul>
-</div>

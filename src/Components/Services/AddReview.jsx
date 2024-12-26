@@ -2,15 +2,17 @@ import React, { useContext } from 'react';
 import review from '../../assets/give-review.jpg'
 import RateComponent from '../Pages/RateComponent';
 import { AuthContext } from '../../Context/AuthProvider';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
 
 const AddReview = () => {
+    const navigate = useNavigate()
     const { rating, user } = useContext(AuthContext);
     const service = useLoaderData();
     const { _id, title } = service
+
 
     // console.log(service);
     const handleReview = e => {
@@ -40,6 +42,7 @@ const AddReview = () => {
                         timer: 1500
                     });
                     form.reset();
+                    navigate('/myreview');
                 }
             })
             .catch(err => {
