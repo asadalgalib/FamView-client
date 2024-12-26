@@ -1,13 +1,12 @@
-# React + Vite
+# FamView
 
+A service review system 
 
- {
-  "hosting": {
-    "public": "dist",
-     "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
- ]
-  }
- }
+## Feature  
+- CRUD operations using MongoDB
+- Login, Register using Firebase
+
+## Live 
+
+Live link : https://ass-eleven-auth.web.app
+
