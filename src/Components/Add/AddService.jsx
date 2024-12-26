@@ -32,7 +32,7 @@ const AddService = () => {
                 if (res.data.insertedId) {
                     Swal.fire({
                         title: 'Success!',
-                        text: 'Movie added successfully',
+                        text: 'Service added successfully',
                         icon: 'success',
                         confirmButtonText: 'Ok'
                     });

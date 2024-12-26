@@ -1,10 +1,39 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import RateComponent from '../Pages/RateComponent';
 import { ImCross } from 'react-icons/im';
+import { AuthContext } from '../../Context/AuthProvider';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
 
-const UpdateReview = ({data}) => {
+const UpdateReview = ({ data }) => {
+    const { rating } = useContext(AuthContext);
 
+    const handleUpdate = e => {
+        e.preventDefault();
 
+        const form = e.target;
+        const review = form.review.value;
+        console.log(review, rating);
+        const update = { review, rating }
+
+        axios.put(`http://localhost:5000/myreview/update?id=${data._id}`,update)
+            .then(res => {
+                // console.log(res.data);
+                if (res.data.modifiedCount > 0) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Updated successfully',
+                        icon: 'success',
+                        confirmButtonText: 'Ok'
+                    });
+                    document.getElementById('my_modal_2').close();
+                }
+            })
+            .catch(err => {
+                toast.error(err);
+            })
+    }
 
     const handleModal = () => {
         document.getElementById('my_modal_2').close();
@@ -15,12 +44,12 @@ const UpdateReview = ({data}) => {
                 <h1 className='text-2xl font-semibold text-white'>Update Review</h1>
                 <button onClick={handleModal}><ImCross className='text-red-600' /></button>
             </div>
-            <form >
+            <form onSubmit={handleUpdate}>
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text text-[#FFFFFF99]">Service Title</span>
                     </label>
-                    <input type="text" value={data.service_title} placeholder="title" name='title' className="input input-bordered" required />
+                    <input type="text" readOnly value={data.service_title} placeholder="title" name='title' className="input input-bordered" required />
                 </div>
                 <div className="form-control">
                     <label className="label">
@@ -33,7 +62,7 @@ const UpdateReview = ({data}) => {
                         <span className="label-text text-[#FFFFFF99]">Write Something</span>
                     </label>
                     <textarea name='review'
-                    defaultValue={data.review}
+                        defaultValue={data.review}
                         placeholder="review"
                         className="textarea textarea-bordered textarea-md w-full" required></textarea>
                 </div>
