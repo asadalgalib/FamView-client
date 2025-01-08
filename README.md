@@ -40,7 +40,10 @@
 
 ###
 
-<p align="left">To run this project locally  : <br><br>- npm i for package install<br>- collect .env file or create a firebase project and use firebase key <br>- npm run dev</p>
+<p align="left">To run this project locally  : <br><br>
+- npm i for package install<br>
+- collect .env file or create a firebase project and use firebase key <br>
+- npm run dev</p>
 
 ###
 
