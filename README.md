@@ -16,7 +16,9 @@
 
 ###
 
-<p align="left">React Js<br>Tailwind CSS<br>Firebase</p>
+- React Js
+- Tailwind CSS
+- Firebase
 
 ###
 
@@ -24,7 +26,10 @@
 
 ###
 
-<p align="left">You can add services <br>You can add review of others services <br>You can manage your services<br>Reviews will be public, anyone can see theme.</p>
+- You can add services
+- You can add review of others services
+- You can manage your services
+- Reviews will be public, anyone can see theme.
 
 ###
 
@@ -32,7 +37,21 @@
 
 ###
 
-<p align="left">axios : ^1.7.9<br>firebase : ^11.1.0<br>framer-motion : ^11.15.0<br>localforage : ^1.10.0<br>match-sorter : ^8.0.0<br>motion : ^11.15.0<br>react : ^18.3.1<br>react-dom : ^18.3.1<br>react-icons : ^5.4.0<br>react-router-dom : ^7.1.0<br>react-simple-star-rating : ^5.1.7<br>react-toastify : ^11.0.2<br>sort-by : ^1.2.0<br>sweetalert2 : ^11.15.3<br>swiper : ^11.1.15</p>
+- axios : ^1.7.9
+- firebase : ^11.1.0
+- framer-motion : ^11.15.0
+- localforage : ^1.10.0
+- match-sorter : ^8.0.0
+- motion : ^11.15.0
+- react : ^18.3.1
+- react-dom : ^18.3.1
+- react-icons : ^5.4.0
+- react-router-dom : ^7.1.0
+- react-simple-star-rating : ^5.1.7
+- react-toastify : ^11.0.2
+- sort-by : ^1.2.0
+- sweetalert2 : ^11.15.3
+- swiper : ^11.1.15
 
 ###
 
