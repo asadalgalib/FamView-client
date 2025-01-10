@@ -35,7 +35,7 @@ const Login = () => {
     }
 
     return (
-        <div className='bg-green-100'>
+        <div className='bg-base-100'>
             <div>
                 <div className='py-10 md:py-14 px-4 md:px-auto flex flex-col justify-center items-center'>
                     <div className="p-10 rounded-sm bg-customBlue w-full max-w-md shrink-0">
@@ -60,7 +60,7 @@ const Login = () => {
                                 </label>
                             </div>
                             <div className="form-control">
-                                <button className="btn btn-outline rounded-sm bg-customGreen border-none w-full text-white my-4 text-lg">Login <FaArrowRight></FaArrowRight></button>
+                                <button className="btn rounded bg-accent hover:bg-accent border-none w-full text-white my-4 text-lg">Login <FaArrowRight></FaArrowRight></button>
                             </div>
                         </form>
                         <div className='flex justify-center items-center'>

@@ -86,10 +86,10 @@ const MyService = () => {
         <div className=' px-4 md:px-12 lg:px-28 py-8 md:py-12 lg:py-20 min-h-screen'>
             <div className='flex flex-col gap-5 lg:flex-row items-center justify-between'>
                 <div>
-                    <h1 className='text-2xl font-semibold lg:text-4xl'>My Services</h1>
+                    <h1 className='text-2xl font-semibold lg:text-4xl text-neutral'>My Services</h1>
                 </div>
                 <div>
-                    <label className="input  input-bordered border-customGreen flex items-center gap-2">
+                    <label className="input  input-bordered border-accent flex items-center gap-2">
                         <input onChange={handleOnChange} type="text" className="grow" name='search' placeholder="Search by title" />
                         <button>
                             <svg
@@ -111,9 +111,9 @@ const MyService = () => {
                     {/* head */}
                     <thead>
                         <tr>
-                            <th>Service</th>
-                            <th className='hidden md:inline'>Company Name</th>
-                            <th>Price</th>
+                            <th className='text-neutral'>Service</th>
+                            <th className='hidden md:inline text-neutral'>Company Name</th>
+                            <th className='text-neutral'>Price</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -130,18 +130,18 @@ const MyService = () => {
                                             </div>
                                         </div>
                                         <div>
-                                            <div className="font-bold">{service?.title}</div>
+                                            <div className="font-bold text-neutral">{service?.title}</div>
                                             <div className="text-sm opacity-50">{service?.category}</div>
                                         </div>
                                     </div>
                                 </td>
-                                <td className='hidden md:inline'>
-                                    {service?.companyName}
+                                <td className='hidden md:inline '>
+                                   <p className='text-neutral'> {service?.companyName}</p>
                                 </td>
-                                <td>{service?.price} BDT</td>
+                                <td className='text-neutral'>{service?.price} BDT</td>
                                 <th className='flex flex-col gap-2'>
-                                    <button onClick={() => handleUpdate(service._id)} className="btn btn-ghost btn-sm bg-customGreen w-full hover:bg-customBlue text-white">Edit</button>
-                                    <button onClick={() => handleDelete(service?._id)} className="btn btn-ghost btn-sm bg-customGreen hover:bg-customBlue text-white">Delete</button>
+                                    <button onClick={() => handleUpdate(service._id)} className="btn btn-ghost btn-sm bg-accent w-full hover:bg-customBlue text-white">Edit</button>
+                                    <button onClick={() => handleDelete(service?._id)} className="btn btn-ghost btn-sm bg-accent hover:bg-customBlue text-white">Delete</button>
                                 </th>
                             </tr>)
                         }

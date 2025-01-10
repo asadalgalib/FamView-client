@@ -18,5 +18,33 @@ export default {
   plugins: [
     require('daisyui'),
   ],
+  daisyui: {
+    themes: [
+      {
+        light: {
+          "text" : "#040605",
+          "neutral": "#040605",
+          "background": "#fff",
+          "primary": "#6c947a", //
+          "secondary": "#c7b2c2",
+          "accent": "#397579",
+          "base-100": "#f0fdf4",
+          "info": "#000",
+        },
+      },
+      {
+        dark: {
+          "text" : "#f9fbfa",
+          "neutral": "#f9fbfa",
+          "background": "#041320",
+          "primary": "#6b9479",
+          "secondary": "#4885ef",
+          "accent": "#428387",
+          "base-100": "#1E1E1E",
+          "info": "#fff",
+        },
+      },
+    ],
+  },
 }
 

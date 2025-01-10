@@ -10,14 +10,15 @@ import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 const MyReview = () => {
     const axiosSecure = useAxiosSecure();
-    const { user,setRating } = useContext(AuthContext);
+    const { user, setRating } = useContext(AuthContext);
     const [myReview, setMyReview] = useState([])
     const [updateData, setUpdateData] = useState([])
     const [filteredService, setFilteredService] = useState([])
 
     useEffect(() => {
-        axiosSecure.get(`/myreview?email=${user.email}`,{withCredentials: true})
-            .then(res => {;
+        axiosSecure.get(`/myreview?email=${user.email}`, { withCredentials: true })
+            .then(res => {
+                ;
                 setMyReview(res.data);
                 setFilteredService(res.data);
             })
@@ -58,53 +59,54 @@ const MyReview = () => {
         });
     }
 
-    const handleUpdate = id =>{
+    const handleUpdate = id => {
         document.getElementById('my_modal_2').showModal();
 
         axiosSecure.get(`/review?id=${id}`)
-        .then(res =>{
-            setUpdateData(res.data);
-            setRating(res.data.rating);
-        })
-        .catch(err => {
-            toast.error(err.code);
-        })
+            .then(res => {
+                setUpdateData(res.data);
+                setRating(res.data.rating);
+            })
+            .catch(err => {
+                toast.error(err.code);
+            })
     }
 
 
-     useEffect(() => {
-            document.title = "FamView - My Review";
-        }, [])
+    useEffect(() => {
+        document.title = "FamView - My Review";
+    }, [])
     return (
-        <div className='max-w-4xl mx-auto px-4 md:px-12 lg:px-28 py-8 md:py-12 lg:py-20 min-h-screen'>
+        <div className='max-w-[1280px] mx-auto px-4 md:px-12 lg:px-28 py-8 md:py-12 lg:py-20 min-h-screen'>
             <div>
-                <h1 className='text-center text-2xl lg:text-4xl font-semibold'>My Reviews</h1>
+                <h1 className='text-center text-2xl lg:text-4xl font-semibold text-neutral'>My Reviews</h1>
             </div>
-            <div className='rounded-sm bg-base-200 grid grid-cols-1 items-center justify-center gap-8 p-5 mt-5'>
+            <div className='rounded grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 p-5'>
                 {
                     filteredService.map(review =>
 
-                        <motion.div key={review._id} whileHover={{ scale: 1.02, transition: { duration: 0.3 } }} className="flex justify-between items-center gap-5 p-5 bg-green-100 rounded-sm border-2 border-customGreen w-full">
-                            <div>
+                        <motion.div key={review._id} whileHover={{ scale: 1.02, transition: { duration: 0.3 } }} className="flex flex-col justify-between items-start gap-5 p-5 bg-base-100 rounded-sm border-2 border-accent w-full">
+                            <div className=''>
+                                <img className='rounded-full w-20'
+                                    src={review.photo}
+                                    alt="profile" />
+                            </div>
+                            <div className="flex flex-col gap-5 ">
                                 <div className='flex-1'>
-                                    <img className='rounded-full w-20'
-                                        src={review.photo}
-                                        alt="profile" />
-                                </div>
-                                <div className="mt-4">
-                                    <h1 className='text-xl font-medium'>{review.name}</h1>
-                                    <p className=''><span className='font-medium'>Service Title :</span> {review.service_title}</p>
+                                    <h1 className='text-xl font-medium text-neutral'>{review.name}</h1>
+                                    <p className=''><span className='font-medium text-neutral'>Service Title :</span> {review.service_title}</p>
                                     <div className='flex items-center justify-start gap-2'>
-                                        <p className='font-medium'>Rating : {review.rating}/10</p>
+                                        <p className='font-medium text-neutral'>Rating : {review.rating}/10</p>
                                         <p className='flex items-center justify-center text-yellow-400'><IoStar /><IoStar /><IoStar /><IoStar /> <IoStarHalf /></p>
                                     </div>
-                                    <p className=''><span className='font-medium'>Review :</span> {review.review}</p>
+                                    <p className=''><span className='font-medium text-neutral'>Review :</span> {review.review}</p>
+                                </div>
+                                <div className='flex gap-2'>
+                                    <button onClick={() => handleUpdate(review._id)} className="btn btn-ghost btn-sm bg-customGreen hover:bg-customBlue text-white">Edit</button>
+                                    <button onClick={() => handleDelete(review?._id)} className="btn btn-ghost btn-sm bg-customGreen hover:bg-customBlue text-white">Delete</button>
                                 </div>
                             </div>
-                            <div className='flex flex-col gap-5'>
-                                <button onClick={()=>handleUpdate(review._id)} className="btn btn-ghost btn-sm bg-customGreen hover:bg-customBlue text-white">Edit</button>
-                                <button onClick={() => handleDelete(review?._id)} className="btn btn-ghost btn-sm bg-customGreen hover:bg-customBlue text-white">Delete</button>
-                            </div>
+
                         </motion.div>)
 
                 }

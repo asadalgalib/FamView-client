@@ -51,12 +51,12 @@ const AddReview = () => {
     return (
         <div className=' px-4 md:px-12 lg:px-28 py-8 md:py-12 lg:py-20'>
             <div className='grid lg:grid-cols-[2fr_2fr] gap-10 '>
-                <div className='border border-customGreen p-4 rounded-sm bg-green-100'>
+                <div className='border border-accent p-4 rounded-sm bg-green-100'>
                     <img src={review} className='rounded-sm' alt="" />
                 </div>
                 <div className='flex flex-col'>
                     <div className='flex-1'>
-                        <h1 className='text-center text-2xl lg:text-4xl font-semibold'>Add review</h1>
+                        <h1 className='text-center text-2xl lg:text-4xl font-semibold text-neutral'>Add review</h1>
                         <p className='text-center max-w-xl mx-auto mt-2'>You can share your opinions about a service by submitting a review. The review will include a rating, text, and your profile information.</p>
                     </div>
                     <div >

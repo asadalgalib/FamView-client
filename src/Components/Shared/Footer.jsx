@@ -5,7 +5,7 @@ import { FaFacebook, FaGithub, FaInstagram, FaX } from 'react-icons/fa6';
 
 const Footer = () => {
     return (
-        <footer className="lg:px-40 text-center bg-customBlue rounded p-10">
+        <footer className="lg:px-40 text-center bg-slate-900 rounded p-10">
             <div className='flex flex-col lg:flex-row justify-between items-center'>
                 <div className='flex flex-col gap-4 items-center'>
                     <img src={logo} alt="" />

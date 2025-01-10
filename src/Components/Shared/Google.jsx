@@ -27,7 +27,7 @@ const Google = () => {
     }
     return (
         <div className='flex justify-center items-center mt-5'>
-            <button onClick={handleGoogle} className="btn btn-outline rounded-sm text-white border-none bg-customGreen w-full text-lg"><FaGoogle></FaGoogle>Continue with Google</button>
+            <button onClick={handleGoogle} className="btn rounded text-white border-none bg-accent hover:bg-accent w-full text-lg"><FaGoogle></FaGoogle>Continue with Google</button>
         </div>
     );
 };

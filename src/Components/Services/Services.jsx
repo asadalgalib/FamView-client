@@ -62,13 +62,13 @@ const Services = () => {
         <div className=' px-4 md:px-12 lg:px-28 py-8 md:py-12 lg:py-20'>
             <div className='flex flex-col gap-5 lg:flex-row items-center justify-between'>
                 <div>
-                    <h1 className='text-center lg:text-left text-2xl lg:text-4xl font-semibold'>Explore Our Services</h1>
-                    <p className='text-center lg:text-left mx-auto max-w-lg mt-2'>Explore a wide range of services available in your area.
+                    <h1 className='text-center lg:text-left text-2xl lg:text-4xl font-semibold text-neutral'>Explore Our Services</h1>
+                    <p className='text-center lg:text-left mx-auto max-w-lg mt-2 '>Explore a wide range of services available in your area.
                         Read honest, detailed reviews from customers who have used the service.</p>
                 </div>
                 <div>
                     <div>
-                        <label className="input input-bordered border-customGreen flex items-center gap-2">
+                        <label className="input input-bordered border-accent flex items-center gap-2">
                             <input onChange={handleOnChange} type="text" className="grow" name='search' placeholder="Search by title" />
                             <button>
                                 <svg
@@ -95,7 +95,7 @@ const Services = () => {
                     </select>
                 </div>
             </div>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-8'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mt-8'>
                 {
                     filteredService.map(service => <ServicesCard key={service._id} service={service}></ServicesCard>)
                 }

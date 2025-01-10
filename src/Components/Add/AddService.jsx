@@ -49,7 +49,7 @@ const AddService = () => {
                 document.title = "FamView - Add Service";
             }, []);
     return (
-        <div className='py-8 md:py-14 px-4 md:px-8 bg-green-100'>
+        <div className='py-8 md:py-14 px-4 md:px-8 '>
             <div className='bg-customBlue w-full max-w-4xl shrink-0 shadow-2xl rounded-sm p-10 mx-auto'>
                 <h1 className="text-3xl text-center font-semibold mb-4 text-white">Post a new Service</h1>
                 <form onSubmit={handleAdd}>

@@ -45,7 +45,7 @@ const Register = () => {
     }
 
     return (
-        <div className='bg-green-100'>
+        <div className='bg-base-100'>
             <div className='py-10 md:py-14 px-4 md:px-auto flex flex-col justify-center items-center'>
                 <div className="p-10 rounded-lg bg-customBlue w-full max-w-md shrink-0">
                     <h1 className="mb-2 text-3xl text-center text-white font-medium">Start For Free Today</h1>
@@ -78,7 +78,7 @@ const Register = () => {
                             <input type="password" placeholder="password" name="password" className="input input-bordered" required />
                         </div>
                         <div className="form-control mt-4">
-                            <button className="rounded-sm btn btn-outline bg-customGreen border-none w-full text-white my-4 text-lg">Register</button>
+                            <button className="rounded-sm btn btn-outline bg-accent hover:bg-accent border-none w-full text-white my-4 text-lg">Register</button>
                         </div>
                     </form>
                     <div className='flex justify-center items-center'>
